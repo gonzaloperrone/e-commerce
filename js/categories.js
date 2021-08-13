@@ -38,12 +38,16 @@ function sortCategories(criteria, array){
 function showCategoriesList(){
 
     let htmlContentToAppend = "";
+    /*Declaro la variable string */
     for(let i = 0; i < currentCategoriesArray.length; i++){
+        /*Hago el for para recorrer el arreglo de categorias */
         let category = currentCategoriesArray[i];
+        /*Le asigno categorias a cada elemento */
+       
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
-
+        /*Se evalua la cantidad de productos de cada categoria en funcion de un minimo y maximo de productos */
             htmlContentToAppend += `
             <a href="category-info.html" class="list-group-item list-group-item-action">
                 <div class="row">
@@ -60,9 +64,13 @@ function showCategoriesList(){
                 </div>
             </a>
             `
+            /*Agrego el codigo que quiero q se muestre en el HTML */
+            /*Muestra los productos en una lista */
+            /*Imagen nombre articulo y descripcion*/
         }
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+        /*Lo agrego al HTML */
     }
 }
 

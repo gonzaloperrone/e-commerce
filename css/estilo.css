@@ -1,6 +1,6 @@
 body {
     background: #007bff;
-    background: linear-gradient(to right, #41ebb2, #33AEFF);
+    background: linear-gradient(to right, #41ebb2, #ffffff);
   }
   
   .btn-login {
@@ -26,9 +26,18 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     display:inline-block;
-    margin: 40px 8px 10px 8px; 
-    color: black
-    
+    color: #2869be;
   }
 
-  
+  img{
+    left: 150px;
+    height: 130px;
+  }
+
+  .card-body{
+    background-color: rgb(252, 247, 247);
+  }
+
+  .ima{
+    padding-left: 20px;
+  }

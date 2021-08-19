@@ -27,6 +27,7 @@ body {
     text-transform: uppercase;
     display:inline-block;
     color: #2869be;
+    text-decoration: underline;
   }
 
   img{
@@ -41,3 +42,5 @@ body {
   .ima{
     padding-left: 20px;
   }
+
+  

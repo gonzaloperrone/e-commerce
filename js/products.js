@@ -15,10 +15,10 @@ function showCategoriesList(array) {
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1" style="font-size: 200%;">`+ product.name + `</h4>
+                            <h4 class="mb-1" >`+ product.name + `</h4>
                             <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
                         </div><br>
-                        <b class="mb-1" style="font-size: 130%;">` + product.currency + ` ` + product.cost + ` </b><br>
+                        <p class="mb-1">` + product.currency + ` ` + product.cost + ` </p><br>
                         <br>
                         <p class="mb-1">` + product.description + `</p>
                     </div>

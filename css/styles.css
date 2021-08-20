@@ -70,7 +70,7 @@ footer p {
 .dropzone{
   border: 2px dashed #0087F7;
   border-radius: 5px;
-  background: white;
+  background: black(44, 42, 42);
 }
 
 .alert{
@@ -139,4 +139,3 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
-

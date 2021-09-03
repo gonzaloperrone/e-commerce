@@ -44,6 +44,8 @@ var getJSONData = function (url) {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
+  //Con innerHtml agreamos el localStorage del nombre del usuario al nav de cada html por el id
+  //Con getItem obtenemos el valor del nombre del usuario
   if (localStorage.getItem("user") !== null) {
     document.getElementById("log").innerHTML += `<a class="py-2 d-none d-md-inline-block" href="#">` + localStorage.getItem("user") + `</a>`;
   }

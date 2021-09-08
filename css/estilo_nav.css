@@ -7,7 +7,6 @@
 /* Style the links inside the navigation bar */
 .topnav .nav_item {
   float: left;
-  display: block;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -118,4 +117,3 @@
 .icon{
 	color: #f2f2f2;
 }
-

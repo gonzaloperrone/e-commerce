@@ -140,11 +140,7 @@ a.custom-card:hover {
   color: orange;
 }
 
-#prod-list-container, #cat-list-container{
-  margin: 25px auto;
-  border: 1px solid #ccc;
-  box-shadow: 7px 7px 15px #141414;
-}
+
 
 .list-group-item:hover{
   -webkit-transform:scale(1.05);transform:scale(1.05);

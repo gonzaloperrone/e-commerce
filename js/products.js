@@ -138,3 +138,48 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showProductsList();
     });
 });
+
+
+const buscador = document.querySelector('#buscador');
+const boton = document.querySelector('#boton');
+const resultado = document.querySelector('#prod-list-container')
+
+resultado.innerHTML = '';
+
+const buscar = ()=>{
+    resultado.innerHTML = '';
+
+    const texto = buscador.value.toLowerCase();
+    for (let product of currentProductsArray) {
+        let prod = product.name.toLowerCase();
+        if(prod.indexOf(texto) !== -1){
+            resultado.innerHTML += `
+            <a href="product-info.html" class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1" >`+ product.name + `</h4>
+                            <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
+                        </div><br>
+                        <p class="mb-1">` + product.currency + ` ` + product.cost + ` </p><br>
+                        <br>
+                        <p class="mb-1">` + product.description + `</p>
+                    </div>
+                </div>
+            </a>
+            `
+        }
+    }
+    if(resultado.innerHTML === ''){
+        resultado.innerHTML += `
+           <li>No hay resultados...</li>
+            `
+    }
+}
+
+boton.addEventListener('click',buscar);
+buscador.addEventListener('keyup',buscar);
+buscar()

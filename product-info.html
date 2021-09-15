@@ -32,7 +32,6 @@
   </div>
 </nav>
 
-
   <div class="container p-5">
     <div class="row">
       <div class="list-group" id="prodinfo-list-container">
@@ -69,7 +68,7 @@
 
               <dt>Imágenes ilustrativas</dt>
               <dd>
-                <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+                <div class="row text-center text-lg-left pt-2" id="showImg">
                 </div>
               </dd>
             </dl>
@@ -82,15 +81,23 @@
         </main>
       </div>
       <hr>
-      <textarea name="comentarios" rows="5" cols="40" placeholder="Escribe aquí tu comentario..." ></textarea><br>
-      <div class="ec-stars-wrapper">
-        <a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-        <a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-        <a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-        <a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-        <a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+      <!-- creo el textarea para el comentario nuevo -->
+      <textarea id="comentario" name="comentarios" rows="5" cols="40" placeholder="Escribe aquí tu comentario..." ></textarea><br>
+      <!-- creo los input radio para la calificación -->
+      <div>
+        <input id="estrella5" class="star" type="radio" name="rating" value="1" /> 	
+        &#9733;
+        <input id="estrella4" class="star" type="radio" name="rating" value="2" /> 	
+        &#9733;
+        <input id="estrella3" class="star" type="radio" name="rating" value="3" /> 	
+        &#9733;
+        <input id="estrella2" class="star" type="radio" name="rating" value="4" /> 	
+        &#9733;
+        <input id="estrella1" class="star" type="radio" name="rating" value="5" /> 	
+        &#9733;
       </div><br>
-      <input type="submit">
+      <!-- con onclick hago que el boton ejectue la funcion para agregar el nuevo comentario con su calificacion -->
+      <input class="btn btn-light" type="submit" onclick="comentNuevo()">
     </div>
   </div>
 

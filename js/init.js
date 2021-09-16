@@ -47,10 +47,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
   //Con innerHtml y el localStorage del nombre del usuario al nav de cada html por el id
   //Con getItem obtenemos el valor del nombre del usuario
   if (localStorage.getItem("user") !== null) {
-    document.getElementById("log").innerHTML += `<a class="nav_item" href="#">` + localStorage.getItem("user") + `</a>`;
+    document.getElementById("log").innerHTML += `<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">` + localStorage.getItem("user") + `</a>`;
   }
 });
-
-
 
 

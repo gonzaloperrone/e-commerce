@@ -10,7 +10,7 @@ function img(array) {
         let imageSrc = array[i];
 
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
+        <div class="col-lg-3 col-md-4 col-6"">
             <div class="d-block mb-4 h-100">
                 <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
             </div>
@@ -48,40 +48,39 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 });
 
-
 //creo función para mostrar los comentarios
 function showComments(array) {
 
     var comments = [];
 
-    //con el for recorro los comentarios del array
+//con el for recorro los comentarios del array
     let htmlContentToAppend = "";
     for (let i = 0; i < array.length; i++) {
         let comments = array[i];
 
-        //creo las variables para mostrar la calificación por estrellas
-        //creo la variable para las estrellas chequeadas
+//creo las variables para mostrar la calificación por estrellas
+//creo la variable para las estrellas chequeadas
         var check = "";
         for (let i = 1; i <= comments.score; i++) {
             check += `<span class="fa fa-star checked"></span>`
         }
 
-        //creo la variable para las estrellas no chequeadas
+//creo la variable para las estrellas no chequeadas
         var noCheck = "";
         for (let i = 1; i <= 5 - comments.score; i++) {
             noCheck += `<span class="fa fa-star"></span>`
         }
 
         htmlContentToAppend += `
-        <div>
+        <div class="comments">
             <div>
                 <div>
                     <div class="justify-content-between">
-                        <h4 class="mb-1 ">`+ comments.user + `</h4><br>
+                        <h4 class="mb-1" id="user">`+ comments.user + `</h4><br>
                         <medium class="text-muted float-right">` + check + noCheck + ` </small>
                         </div>
                     <p>` + comments.description + `</p>
-                    <small class="text-muted float-right"> ` + comments.dateTime + `  </small>
+                    <small class=" float-right"> ` + comments.dateTime + `  </small>
                 </div>
             </div>
         </div>
@@ -93,7 +92,7 @@ function showComments(array) {
 }
 
 
-//ejecuto la funcion con un evento para mostrar los comentarios
+    //ejecuto la funcion con un evento para mostrar los comentarios
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -103,10 +102,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 });
 
-
-
-
-//creo la funcion para agregar nuevos comentarios
+    //creo la funcion para agregar nuevos comentarios
 function comentNuevo() {
 
     //guardo los datos obtenidos en una variable
@@ -114,11 +110,11 @@ function comentNuevo() {
     let usuario = localStorage.getItem("user");
 
     //guardo los datos en las variables
-    var score1 = document.getElementById("estrella5");
-    var score2 = document.getElementById("estrella4");
-    var score3 = document.getElementById("estrella3");
-    var score4 = document.getElementById("estrella2");
-    var score5 = document.getElementById("estrella1");
+    var score1 = document.getElementById("radio5");
+    var score2 = document.getElementById("radio4");
+    var score3 = document.getElementById("radio3");
+    var score4 = document.getElementById("radio2");
+    var score5 = document.getElementById("radio1");
     var puntuacion = 0
     //defino el rango de estrellas chequeadas
     if (score5.checked)
@@ -175,7 +171,7 @@ function comentNuevo() {
     }
 
     //aplico el formato del horario
-    var dateTime = `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`;
+    var dateTime = `${year}-${month}-${day}  ${hour}:${minutes}:${seconds}`;
 
 
 
@@ -184,17 +180,17 @@ function comentNuevo() {
                     <div>
                         <div>
                             <div class="justify-content-between">
-                                <h4 class="mb-1">`+ usuario + `</h4><br>
+                                <h4 class="mb-1" id="user">`+ usuario + `</h4><br>
                                 <medium class="text-muted float-right"> `+ check + noCheck + `  </small>
-                                </div>
+                            </div>
                             <p>` + commentsUser + `</p>
-                            <small class="text-muted float-right"> ` + dateTime + `  </small>
+                            <small class=" float-right"> ` + dateTime + `  </small>
                         </div>
                     </div>
                 </div>
-                <br><hr>
+                <hr>
                 `
-//agrego el cnuevo comentario al html
+    //agrego el cnuevo comentario al html
     document.getElementById("comments").innerHTML += htmlContentToAppend;
 }
 

@@ -1,4 +1,4 @@
-function miFuncion() {
+function logIn() {
 
   let user = document.getElementById("user").value;
   let pass = document.getElementById("pass").value;

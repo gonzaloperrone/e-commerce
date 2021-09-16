@@ -1,0 +1,63 @@
+input[type = "radio"]{ 
+    display:none;
+    }
+    #form {
+        width: 250px;
+        margin: 0 auto;
+        height: 50px;
+      }
+      
+      #form p {
+        float: right;
+      }
+      
+      #form label {
+        font-size: 80px;
+      }
+      
+      input[type="radio"] {
+        display: none;
+      }
+      
+      label {
+        color: grey;
+      }
+      
+      .clasificacion {
+        direction: rtl;
+        unicode-bidi: bidi-override;
+      }
+      
+      label:hover,
+      label:hover ~ label {
+        color: orange;
+      }
+      
+      input[type="radio"]:checked ~ label {
+        color: orange;
+      }
+
+      div.justified {
+        display: flex;
+        justify-content: center;
+    }
+
+    div.stars{
+        display: flex;
+        justify-content: center;
+    }
+    div.butt{
+      display: flex;
+      justify-content: center;
+  }
+
+  #user{
+    background-color: rgb(245, 235, 215);
+    text-align: center;
+    padding-top: 9px!important;
+    padding-bottom: 9px!important;
+  }
+
+  div.comentarios{
+    background-color: aqua;
+  }

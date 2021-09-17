@@ -139,19 +139,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 });
 
-
+//creo las constantes para el buscador
 const buscador = document.querySelector('#buscador');
-const boton = document.querySelector('#boton');
 const resultado = document.querySelector('#prod-list-container')
 
 resultado.innerHTML = '';
 
 const buscar = ()=>{
     resultado.innerHTML = '';
-
+//con toLowerCase convierto la cadena en letras minusculas
     const texto = buscador.value.toLowerCase();
+    //recorro el array y declaro una variable para que el buscador filtre por el nombre del producto
     for (let product of currentProductsArray) {
         let prod = product.name.toLowerCase();
+        //con indexOf nos retorna el primer indice del array
         if(prod.indexOf(texto) !== -1){
             resultado.innerHTML += `
             <a href="product-info.html" class="list-group-item list-group-item-action">
@@ -173,13 +174,13 @@ const buscar = ()=>{
             `
         }
     }
+    //si no se encuentra cierta letra en el filtrado por nombre creamos un mensaje de que no hay resultados
     if(resultado.innerHTML === ''){
         resultado.innerHTML += `
            <li>No hay resultados...</li>
             `
     }
 }
-
-boton.addEventListener('click',buscar);
+//creamos el evento para el buscador que con keyup se ejecuta el evento en cada tecla que se escriba
 buscador.addEventListener('keyup',buscar);
 buscar()

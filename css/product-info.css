@@ -26,6 +26,7 @@ input[type = "radio"]{
       .clasificacion {
         direction: rtl;
         unicode-bidi: bidi-override;
+        font-size: 25px;
       }
       
       label:hover,

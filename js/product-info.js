@@ -47,13 +47,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 });
+var comments = [];
 
 //creo función para mostrar los comentarios
 function showComments(array) {
 
-    var comments = [];
-
-//con el for recorro los comentarios del array
+    //con el for recorro los comentarios del array
     let htmlContentToAppend = "";
     for (let i = 0; i < array.length; i++) {
         let comments = array[i];

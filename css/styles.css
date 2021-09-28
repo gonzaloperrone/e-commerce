@@ -219,3 +219,26 @@ a.custom-card:hover{
 #boton{
   margin-left: 10px;
 }
+
+#cards{
+  display:inline-block; 
+}
+
+.card-title{
+  text-align: center;
+}
+
+.vermas{
+  float: right;
+  margin-bottom: 10px;
+}
+
+.related{
+  text-align: center;
+}
+
+.prodRel{
+  text-align: center;
+  margin: 20px;
+  margin-top: 40px;
+}

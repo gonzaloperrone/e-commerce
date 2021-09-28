@@ -14,13 +14,16 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="../e-commerce/css/product-info.css">
+  <link rel="stylesheet" href="../e-commerce/css/comment.css">
+  <link rel="stylesheet" href="../e-commerce/css/carousel.css">
 </head>
 
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand"><img src="../e-commerce/img/login_edit.png" alt="e-commerce" style="width: 100px;"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -41,7 +44,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="cart.html">Mi carrito</a>
             <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
-            <a class="dropdown-item" href="index.html">Cerrar sesión</a>
+            <a class="dropdown-item" id="logOut" href="index.html">Cerrar sesión</a>
           </div>
         </li>
       </ul>
@@ -87,12 +90,17 @@
                 <div class="row text-center text-lg-left pt-2" id="showImg">
                 </div>
               </dd>
+<div id="demo" class="carousel slide col-4" data-ride="carousel">
+  <ul class="carousel-indicators" id="indicators"></ul> 
+  <div class="carousel-inner" id="carousel"></div>
+  <a href="#demo" class="carousel-control-prev" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
+  <a href="#demo" class="carousel-control-next col-2" data-slide="next"><span class="carousel-control-next-icon"></span></a>
+</div>
 
-              
 
-            <h2 id="comm" style="font-size: 2rem;">Comentarios</h2><br>
-            <div id="comments">
-            </div>
+              <h2 id="comm" style="font-size: 2rem;">Comentarios</h2><br>
+              <div id="comments">
+              </div>
           </div>
       </div>
       </main>
@@ -124,9 +132,13 @@
     <div class="butt">
       <input class="btn btn-light" type="submit" onclick="comentNuevo()">
     </div>
-  </div>
-
-
+  
+  <dt class="prodRel">Productos relacionados</dt>
+  <dd>
+    <div id="relatedProd" class="related">
+    </div>
+  </dd>
+</div>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">

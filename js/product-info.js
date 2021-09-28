@@ -4,21 +4,23 @@ var product = {};
 function img(array) {
 
     let htmlContentToAppend = "";
+    htmlContentToAppend += `<div class="carousel-item active">
+    <img src="${array[0]}" alt="">
+    </div>`
+    let indicators = `<li data-target = "#demo" data-slide-to="0" class="active"></li>`;
 
-    //recorro las img del array con el for
-    for (let i = 0; i < array.length; i++) {
-        let imageSrc = array[i];
 
-        htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6"">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
-        </div>
-        `
-        //lo agrego al html
-        document.getElementById("showImg").innerHTML = htmlContentToAppend;
-    }
+for (let i = 1; i < array.length; i++) {
+    let imageSrc = array[i];
+    htmlContentToAppend += `
+<div class="carousel-item">
+<img src="${array[i]}" alt="">
+</div>`;
+    indicators += `<li data-target="#demo" data-slide-to="${i}"></li>
+`
+}
+document.getElementById("indicators").innerHTML = indicators;
+document.getElementById("carousel").innerHTML = htmlContentToAppend;
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -47,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 });
+
 var comments = [];
 
 //creo función para mostrar los comentarios
@@ -57,33 +60,44 @@ function showComments(array) {
     for (let i = 0; i < array.length; i++) {
         let comments = array[i];
 
-//creo las variables para mostrar la calificación por estrellas
-//creo la variable para las estrellas chequeadas
+        //creo las variables para mostrar la calificación por estrellas
+        //creo la variable para las estrellas chequeadas
         var check = "";
         for (let i = 1; i <= comments.score; i++) {
             check += `<span class="fa fa-star checked"></span>`
         }
 
-//creo la variable para las estrellas no chequeadas
+        //creo la variable para las estrellas no chequeadas
         var noCheck = "";
         for (let i = 1; i <= 5 - comments.score; i++) {
             noCheck += `<span class="fa fa-star"></span>`
         }
 
         htmlContentToAppend += `
-        <div class="comments">
-            <div>
-                <div>
-                    <div class="justify-content-between">
-                        <h4 class="mb-1" id="user">`+ comments.user + `</h4><br>
-                        <medium class="text-muted float-right">` + check + noCheck + ` </small>
-                        </div>
+        <div class="container">
+        <div class="row">
+        <div class="col-12">
+            <div class="card card-white post">
+                <div class="post-heading">
+                    <div class="float-left image">
+                    <img src="../e-commerce/img/usuario.png" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="float-left meta">
+                        <div class="title h5">
+                            <a href="#"><b>`+ comments.user + `</b></a>
+                        </div> 
+                        <h6 class="text-muted time ">` + comments.dateTime + `</h6>
+                    </div>
+                    <medium class="text-muted float-right"> `+ check + noCheck + `  </small>
+                </div>
+                <div class="post-description"> 
                     <p>` + comments.description + `</p>
-                    <small class=" float-right"> ` + comments.dateTime + `  </small>
                 </div>
             </div>
         </div>
-        <br><hr>
+        
+    </div>
+</div>
         `
     }
     //las agrego al html
@@ -91,7 +105,7 @@ function showComments(array) {
 }
 
 
-    //ejecuto la funcion con un evento para mostrar los comentarios
+//ejecuto la funcion con un evento para mostrar los comentarios
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -101,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 });
 
-    //creo la funcion para agregar nuevos comentarios
+//creo la funcion para agregar nuevos comentarios
 function comentNuevo() {
 
     //guardo los datos obtenidos en una variable
@@ -175,24 +189,67 @@ function comentNuevo() {
 
 
     var htmlContentToAppend = `
-                <div>
-                    <div>
-                        <div>
-                            <div class="justify-content-between">
-                                <h4 class="mb-1" id="user">`+ usuario + `</h4><br>
-                                <medium class="text-muted float-right"> `+ check + noCheck + `  </small>
-                            </div>
-                            <p>` + commentsUser + `</p>
-                            <small class=" float-right"> ` + dateTime + `  </small>
-                        </div>
-                    </div>
-                </div>
-                <hr>
+</div><div class="container">
+<div class="row">
+<div class="col-12">
+    <div class="card card-white post">
+        <div class="post-heading">
+            <div class="float-left image">
+            <img src="../e-commerce/img/usuario.png" class="img-circle avatar" alt="user profile image">
+            </div>
+            <div class="float-left meta">
+                <div class="title h5">
+                    <a href="#"><b>`+ usuario + `</b></a>
+                </div> 
+                <h6 class="text-muted time ">` + dateTime + `</h6>
+            </div>
+            <medium class="text-muted float-right"> `+ check + noCheck + `  </small>
+        </div>
+        <div class="post-description"> 
+            <p>` + commentsUser + `</p>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
                 `
     //agrego el cnuevo comentario al html
     document.getElementById("comments").innerHTML += htmlContentToAppend;
 }
 
 
+var relatedArray = [];
+
+function related(prod, relatedProds) {
+
+    let htmlContentToAppend = "";
+    for (let i = 0; i < relatedProds.length; i++) {
+        let related = prod[relatedProds[i]];
+
+        htmlContentToAppend += `
+        <div class="card" style="width: 18rem;" id="cards">
+  <img class="card-img-top" src="` + related.imgSrc + `" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">`+ related.name + `</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="vermas">Ver más</a>
+  </div>
+</div>
+        `
+    }
+
+    document.getElementById("relatedProd").innerHTML = htmlContentToAppend;
+}
 
 
+
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(PRODUCTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            prod = resultObj.data;
+            relatedProds = product.relatedProducts;
+            related(prod, relatedProds);
+        }
+    });
+});

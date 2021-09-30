@@ -5,22 +5,22 @@ function img(array) {
 
     let htmlContentToAppend = "";
     htmlContentToAppend += `<div class="carousel-item active">
-    <img src="${array[0]}" alt="">
+    <img class="d-block w-100" src="${array[0]}" alt="">
     </div>`
-    let indicators = `<li data-target = "#demo" data-slide-to="0" class="active"></li>`;
+    let indicators = `<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>`;
 
 
-for (let i = 1; i < array.length; i++) {
-    let imageSrc = array[i];
-    htmlContentToAppend += `
-<div class="carousel-item">
-<img src="${array[i]}" alt="">
-</div>`;
-    indicators += `<li data-target="#demo" data-slide-to="${i}"></li>
+    for (let i = 1; i < array.length; i++) {
+        let imageSrc = array[i];
+        htmlContentToAppend += `
+        <div class="carousel-item">
+        <img class="d-block w-100" src="${array[i]}" alt="">
+        </div>`;
+        indicators += `<li data-target="#carouselExampleIndicators" data-slide-to="${i}"></li>
 `
-}
-document.getElementById("indicators").innerHTML = indicators;
-document.getElementById("carousel").innerHTML = htmlContentToAppend;
+    }
+    document.getElementById("indicators").innerHTML = indicators;
+    document.getElementById("carousel").innerHTML = htmlContentToAppend;
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -231,9 +231,9 @@ function related(prod, relatedProds) {
         <div class="card" style="width: 18rem;" id="cards">
   <img class="card-img-top" src="` + related.imgSrc + `" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">`+ related.name + `</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="vermas">Ver más</a>
+    <h2 class="card-title">`+ related.name + `</h2><hr>
+    <h5 id="costC">`+product.currency + " " + product.cost+`</h5><br>
+    <a href="#" class="vermas">Más información</a>
   </div>
 </div>
         `

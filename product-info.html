@@ -70,7 +70,7 @@
                 <p id="productDescription"></p>
               </dd>
 
-              <dt>Categoría</dt>
+              <dt class="categoryId">Categoría</dt>
               <dd>
                 <p id="productCategory"></p>
               </dd>
@@ -90,13 +90,15 @@
                 <div class="row text-center text-lg-left pt-2" id="showImg">
                 </div>
               </dd>
-<div id="demo" class="carousel slide col-4" data-ride="carousel">
-  <ul class="carousel-indicators" id="indicators"></ul> 
-  <div class="carousel-inner" id="carousel"></div>
-  <a href="#demo" class="carousel-control-prev" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
-  <a href="#demo" class="carousel-control-next col-2" data-slide="next"><span class="carousel-control-next-icon"></span></a>
-</div>
-
+              <div id="carouselExampleIndicators" class="carousel slide col-md-6" data-ride="carousel">
+                <ul class="carousel-indicators" id="indicators"></ul>
+                <div class="carousel-inner" id="carousel"></div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </a>
+              </div>
 
               <h2 id="comm" style="font-size: 2rem;">Comentarios</h2><br>
               <div id="comments">
@@ -132,13 +134,13 @@
     <div class="butt">
       <input class="btn btn-light" type="submit" onclick="comentNuevo()">
     </div>
-  
-  <dt class="prodRel">Productos relacionados</dt>
-  <dd>
-    <div id="relatedProd" class="related">
-    </div>
-  </dd>
-</div>
+
+    <dt class="prodRel">Productos relacionados</dt>
+    <dd>
+      <div id="relatedProd" class="related">
+      </div>
+    </dd>
+  </div>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">

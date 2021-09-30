@@ -160,6 +160,7 @@ a.custom-card:hover{
 
 #comm{
   text-align:center;
+  margin-top: 40px;
 }
 
 .stars-outer {
@@ -229,8 +230,7 @@ a.custom-card:hover{
 }
 
 .vermas{
-  float: right;
-  margin-bottom: 10px;
+  margin-top: 10%;
 }
 
 .related{

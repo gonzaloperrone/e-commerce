@@ -219,8 +219,6 @@ function comentNuevo() {
     document.getElementById("comments").innerHTML += htmlContentToAppend;
 }
 
-//creo la variable
-var relatedArray = [];
 
 //creo la función para mostrar los prod. relacionados
 function related(prod, relatedProds) {

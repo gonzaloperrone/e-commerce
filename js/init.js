@@ -48,8 +48,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   //Con getItem obtenemos el valor del nombre del usuario
   if (localStorage.getItem("user") !== null) {
     document.getElementById("log").innerHTML += `<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">` + "Bienvenid@" + " " + localStorage.getItem("user") + `</a>`;
-  }
-});
+  }else{
+    document.getElementById("log").innerHTML += `<a class="nav-link" href="index.html">Iniciar sesión</a>`;
+}});
 
 document.addEventListener("DOMContentLoaded", function (e) {
   if(document.getElementById("logOut")!==null){

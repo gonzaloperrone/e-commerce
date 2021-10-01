@@ -1,15 +1,15 @@
 var product = {};
 
-//creo funcion para mostrar las img
+//creo funcion para mostrar las img en forma de carrusel
 function img(array) {
-
+//defino la variable para la primer foto y los indicadores
     let htmlContentToAppend = "";
     htmlContentToAppend += `<div class="carousel-item active">
     <img class="d-block w-100" src="${array[0]}" alt="">
     </div>`
     let indicators = `<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>`;
 
-
+//con el for empiezo a recorrer desde la imagen 1
     for (let i = 1; i < array.length; i++) {
         let imageSrc = array[i];
         htmlContentToAppend += `
@@ -19,6 +19,7 @@ function img(array) {
         indicators += `<li data-target="#carouselExampleIndicators" data-slide-to="${i}"></li>
 `
     }
+    //obtengo los id para agregarlos al html
     document.getElementById("indicators").innerHTML = indicators;
     document.getElementById("carousel").innerHTML = htmlContentToAppend;
 }

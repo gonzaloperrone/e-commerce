@@ -218,13 +218,15 @@ function comentNuevo() {
     document.getElementById("comments").innerHTML += htmlContentToAppend;
 }
 
-
+//creo la variable
 var relatedArray = [];
 
+//creo la función para mostrar los prod. relacionados
 function related(prod, relatedProds) {
 
     let htmlContentToAppend = "";
     for (let i = 0; i < relatedProds.length; i++) {
+        //con las variables uso los 2 arrays y con el for recorro solo los elementos que obtengo del array de los productos relacionados
         let related = prod[relatedProds[i]];
 
         htmlContentToAppend += `
@@ -232,22 +234,25 @@ function related(prod, relatedProds) {
   <img class="card-img-top" src="` + related.imgSrc + `" alt="Card image cap">
   <div class="card-body">
     <h2 class="card-title">`+ related.name + `</h2><hr>
-    <h5 id="costC">`+product.currency + " " + product.cost+`</h5><br>
+    <h5 id="costC">`+related.currency + " " + related.cost+`</h5><br>
     <a href="#" class="vermas">Más información</a>
   </div>
 </div>
         `
     }
-
+//agrego al HTML
     document.getElementById("relatedProd").innerHTML = htmlContentToAppend;
 }
 
 
-
+//obtengo el json de los productos
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
+            //defino las variables 
+            //prod es la variable para obtener los productos
             prod = resultObj.data;
+            //relatedProd es la variable para obtener el indice de los productos delacionados del array de la informacion de productos
             relatedProds = product.relatedProducts;
             related(prod, relatedProds);
         }

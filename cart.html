@@ -11,7 +11,6 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link rel="stylesheet" href="../e-commerce/css/estilo_nav.css">
 
   <style>
     .bd-placeholder-img {
@@ -31,13 +30,14 @@
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link href="css/dropzone.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/cart.css">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand"><img src="../e-commerce/img/login_edit.png" alt="e-commerce" style="width: 100px;"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -64,16 +64,118 @@
       </ul>
     </div>
   </nav>
-</nav>
-  </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <div class="container">
+    <div class="text-center p-4">
+      <h2>Carrito</h2>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-12 order-md-1">
+        <div class="container-fluid">
+          <div class="row">
+            <aside class="col-lg-12">
+              <div class="card">
+                <div class="table-responsive">
+                  <table class="table table-borderless table-shopping-cart table-striped">
+                    <thead class="text-head">
+                      <tr class="small text-uppercase">
+                        <th scope="col">Imágen</th>
+                        <th scope="col" width="320">Producto</th>
+                        <th scope="col" width="300">Cantidad</th>
+                        <th scope="col" width="190">Precio</th>
+                        <th scope="col" width="400">Subtotal (USD)</th>
+                        <th scope="col" class="text-right d-none d-md-block" width="200"></th>
+                      </tr>
+                    </thead>
+                    <tbody id="cart"></tbody>
+                  </table>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div class="text-center p-4">
+            <h3>Direccion de envio</h3>
+          </div>
+          <div class="row">
+
+            <div class="col-md-3 mb-3">
+              <label for="zip">País</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="zip">Calle</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="zip">Número</label>
+              <input type="number" class="form-control">
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="zip">Esquina</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <hr class="mb-4">
+          <div>
+            <h3>Direccion de envio</h3>
+          </div>
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input id="premium" name="publicationType" type="radio" class="custom-control-input" required="">
+              <label class="custom-control-label" for="premium">Premium (15%) (2-5 días) </label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="express" name="publicationType" type="radio" class="custom-control-input" required="">
+              <label class="custom-control-label" for="express">Express (7%) (5-8 días)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="standard" name="publicationType" type="radio" class="custom-control-input" required="">
+              <label class="custom-control-label" for="standard">Standard (5%) (12-15 días)</label>
+            </div>
+          </div>
+          <hr class="mb-4">
+          <h3>Forma de pago</h3>
+        </div>
+        <div class="d-block my-3">
+          <div class="custom-control custom-radio">
+            <input id="credit" name="pay" type="radio" class="custom-control-input" required="">
+            <label class="custom-control-label" for="credit">Tarjeta de crédito</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="transf" name="pay" type="radio" class="custom-control-input" required="">
+            <label class="custom-control-label" for="transf">Transferencia bancaria</label>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        <div>
+          <h3>Costo</h3>
+        </div>
+        <ul class="list-group mb-3">
+          <li class="d-flex justify-content-between">
+            <span>Total:</span>
+            <p><strong>USD</strong> <strong id="total">-</strong></p>
+          </li>
+        </ul>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg" type="submit">Seguir comprando</button>
+        <button class="btn btn-primary btn-lg" type="submit">Comprar</button>
+      </div>
     </div>
   </div>
+  <footer class="text-muted">
+    <div class="container">
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
+  <div class="alert fade" role="alert" id="alertResult">
+    <span id="resultSpan"></span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -84,9 +186,8 @@
   </div>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/init.js"></script>
 </body>
 
 </html>

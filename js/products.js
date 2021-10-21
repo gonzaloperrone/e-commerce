@@ -47,23 +47,17 @@ function showProductsList() {
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
             //Se evalua la cantidad de articulos vendidos en funcion de un minimo y un maximo
             htmlContentToAppend += `
-                <a href="product-info.html" class="list-group-item list-group-item-action">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                        </div>
-                        <div class="col">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h4 class="mb-1" >`+ product.name + `</h4>
-                                <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
-                            </div><br>
-                            <p class="mb-1">` + product.currency + ` ` + product.cost + ` </p><br>
-                            <br>
-                            <p class="mb-1">` + product.description + `</p>
-                        </div>
-                    </div>
-                </a>
-                `
+            <div class="col-md-4">
+              <a class="card mb-4 shadow-sm custom-card">
+              <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                <h3 class="m-3">`+ product.name + `</h3>
+                <div class="card-body">
+                <p class="card-text" style="font-weight:bold">` + product.currency + ` ` + product.cost + `</p>
+                  <p class="card-text">` + product.description + `</p>
+                  <p class="text-muted">` + product.soldCount + ` artículos vendidos<p>
+                </div>
+              </a>
+            </div> `
             //Agrego el codigo que quiero que se muestre en el HTML
             //Muestra los productos en una lista
         }
@@ -116,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
     document.getElementById("rangeFilterCount").addEventListener("click", function () {
-         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de articulos vendidos de cada producto
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
@@ -145,42 +139,36 @@ const resultado = document.querySelector('#prod-list-container')
 
 resultado.innerHTML = '';
 
-const buscar = ()=>{
+const buscar = () => {
     resultado.innerHTML = '';
-//con toLowerCase convierto la cadena en letras minusculas
+    //con toLowerCase convierto la cadena en letras minusculas
     const texto = buscador.value.toLowerCase();
     //recorro el array y declaro una variable para que el buscador filtre por el nombre del producto
     for (let product of currentProductsArray) {
         let prod = product.name.toLowerCase();
         //con indexOf nos retorna el primer indice del array
-        if(prod.indexOf(texto) !== -1){
+        if (prod.indexOf(texto) !== -1) {
             resultado.innerHTML += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1" >`+ product.name + `</h4>
-                            <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
-                        </div><br>
-                        <p class="mb-1">` + product.currency + ` ` + product.cost + ` </p><br>
-                        <br>
-                        <p class="mb-1">` + product.description + `</p>
-                    </div>
+            <div class="col-md-4">
+              <a class="card mb-4 shadow-sm custom-card">
+              <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                <h3 class="m-3">`+ product.name + `</h3>
+                <div class="card-body">
+                <p class="card-text" style="font-weight:bold">` + product.currency + ` ` + product.cost + `</p>
+                  <p class="card-text">` + product.description + `</p>
+                  <p class="text-muted">` + product.soldCount + ` artículos vendidos<p>
                 </div>
-            </a>
-            `
+              </a>
+            </div> `
         }
     }
     //si no se encuentra cierta letra en el filtrado por nombre creamos un mensaje de que no hay resultados
-    if(resultado.innerHTML === ''){
+    if (resultado.innerHTML === '') {
         resultado.innerHTML += `
            <li>No hay resultados...</li>
             `
     }
 }
 //creamos el evento para el buscador que con keyup se ejecuta el evento en cada tecla que se escriba
-buscador.addEventListener('keyup',buscar);
+buscador.addEventListener('keyup', buscar);
 buscar()

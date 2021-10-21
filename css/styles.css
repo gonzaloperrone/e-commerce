@@ -144,15 +144,15 @@ a.custom-card:hover {
   color: orange;
 }
 
-
+.navbar-nav .dropdown-menu{
+  position: absolute !important;
+}
 
 .list-group-item:hover{
   -webkit-transform:scale(1.05);transform:scale(1.05);
 }
 
-nav a:hover{
-  -webkit-transform:scale(1.2);transform:scale(1.2);
-}
+
 
 a.custom-card:hover{
   -webkit-transform:scale(1.05);transform:scale(1.05);

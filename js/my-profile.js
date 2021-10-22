@@ -19,7 +19,6 @@ $(document).ready(function () {
 
 function saveData(){
     let data = {
-        //img: document.getElementById("file-upload").value,
         name1: document.getElementById("name1").value,
         name2: document.getElementById("name2").value,
         lastName1: document.getElementById("lastName1").value,
@@ -37,7 +36,6 @@ document.getElementById("saveButton").addEventListener("click",function(e){
 
 document.addEventListener("DOMContentLoaded", function(e){
     let allData = JSON.parse(localStorage.getItem("profile"));
-    //document.getElementById("file-upload").value= allData.file-upload;
     document.getElementById("name1").value= allData.name1;
     document.getElementById("name2").value= allData.name2;
     document.getElementById("lastName1").value= allData.lastName1;
@@ -45,5 +43,5 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("age").value= allData.age;
     document.getElementById("email").value= allData.email;
     document.getElementById("phone").value= allData.phone;
-    console.log(allData)
+    //console.log(allData)
 })

@@ -48,7 +48,7 @@ function showProductsList() {
             //Se evalua la cantidad de articulos vendidos en funcion de un minimo y un maximo
             htmlContentToAppend += `
             <div class="col-md-4">
-              <a class="card mb-4 shadow-sm custom-card">
+              <a class="card mb-4 shadow-sm custom-card" href="product-info.html">
               <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
                 <h3 class="m-3">`+ product.name + `</h3>
                 <div class="card-body">

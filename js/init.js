@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 document.addEventListener("DOMContentLoaded", function (e) {
   if(document.getElementById("logOut")!==null){
     document.getElementById("logOut").addEventListener("click", function(e){
-      localStorage.clear("user");
+      localStorage.clear();
     })
   }
 });

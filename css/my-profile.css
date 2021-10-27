@@ -19,16 +19,13 @@ body{
     margin-right: .5rem!important;
 }
 
-input[type="file"] {
-    display: none;
-}
-
-.custom-file-upload {
-    border: 1px solid #ccc;
+.file-upload {
     display: inline-block;
     padding: 6px 12px;
+    margin-top: 10px;
     cursor: pointer;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
+    width: 175px;
 }
 
 .form{
@@ -41,4 +38,13 @@ input[type="file"] {
 
 .card-body{
     background-color: #ececec;
+}
+
+.responsive {
+    width: 170px;
+    height: auto;
+  }
+
+.custom-file-upload{
+    margin-top: 10px;
 }

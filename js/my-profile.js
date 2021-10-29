@@ -23,6 +23,7 @@ document.getElementById("saveButton").addEventListener("click",function(e){
 document.addEventListener("DOMContentLoaded", function(e){
     let allData = JSON.parse(localStorage.getItem("profile"));
     //muestro los datos que estan guardados en los inputs
+    if (allData !== null){
     document.getElementById("name1").value= allData.name1;
     document.getElementById("name2").value= allData.name2;
     document.getElementById("lastName1").value= allData.lastName1;
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("age").value= allData.age;
     document.getElementById("email").value= allData.email;
     document.getElementById("phone").value= allData.phone;
-
+}
     //obtengo la imagen guardada en local storage
     const recentImageDataUrl = localStorage.getItem("recent-image");
     //con setAtributte podemos actualizar el url antiguo con el nuevo seleccionado

@@ -11,6 +11,7 @@ function saveData(){
         phone: document.getElementById("phone").value
     }
     //guardo los datos escritos en los inputs
+    //con JSON.stringify convierto los objetos en una cadena de texto JSON
 localStorage.setItem("profile",JSON.stringify(data));
 }
 //agrego funcion al boton de guardar para que cuadno aprete se guarden los datos escritos en los inputs

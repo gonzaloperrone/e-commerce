@@ -1,6 +1,7 @@
 const CART2 = "https://japdevdep.github.io/ecommerce-api/cart/654.json"
 var cartInfo = [];
 var subTotalSum = 0;
+var porcent = 0;
 
 //funcion para la tabla de carrito
 function cartInf() {
@@ -50,17 +51,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
             cartInf();
         }
     });
-    document.getElementById("premium").addEventListener("click", function () {
-        premium();
-        costPremium();
+    document.getElementById("premium").addEventListener("change", function(){
+        porcent = 0.15;
+        updateTotalCosts();
     });
-    document.getElementById("express").addEventListener("click", function () {
-        express();
-        costExpress();
+    
+    document.getElementById("express").addEventListener("change", function(){
+        porcent = 0.07;
+        updateTotalCosts();
     });
-    document.getElementById("standard").addEventListener("click", function () {
-        standard();
-        costStandard();
+    
+    document.getElementById("standard").addEventListener("change", function(){
+        porcent = 0.05;
+        updateTotalCosts();
     });
 });
 
@@ -90,43 +93,21 @@ function total() {
 }
 
 function updateTotalCosts(){
-    let subtotal = parseFloat(document.getElementById("total").innerHTML);
     
-    let costoEnvio = subtotal * subTotalSum;
-    document.getElementById("costo").innerHTML = costoEnvio;
+    let costoEnvio = subTotalSum * porcent;
+    document.getElementById("cost").innerHTML = Math.round(costoEnvio);
 
+    let total =  subTotalSum +  costoEnvio;
+    document.getElementById("total").innerHTML = Math.round(total);
 }
 
-
-function premium() {
-    document.getElementById("total").innerHTML = Math.round((subTotalSum) + (subTotalSum * 0.15));
-}
-
-function express() {
-    document.getElementById("total").innerHTML = Math.round((subTotalSum) + (subTotalSum * 0.07));
-}
-
-function standard() {
-    document.getElementById("total").innerHTML = Math.round((subTotalSum) + (subTotalSum * 0.05));
-}
-
-function costPremium() {
-    document.getElementById("cost").innerHTML = Math.round(subTotalSum * 0.15);
-}
-
-function costExpress() {
-    document.getElementById("cost").innerHTML = Math.round(subTotalSum * 0.07);
-}
-
-function costStandard() {
-    document.getElementById("cost").innerHTML = Math.round(subTotalSum * 0.05);
-}
 
 function deleteRowFun(row, remov) {
     var d = row.parentNode.parentNode.rowIndex;
     let subtotal = parseInt(document.getElementById("subt" + remov).innerText);
     document.getElementById('tab').deleteRow(d);
     subTotalSum = Math.round(subTotalSum - subtotal);
+    document.getElementById("cost").innerHTML = subTotalSum;
     document.getElementById("total").innerHTML = subTotalSum;
 }
 

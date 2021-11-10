@@ -202,13 +202,13 @@
                 </div>
                 <div class="modal-body">
                   <form class="row g-3 needs-validation" novalidate onsubmit="return habilitarCompra();">
-                    <div class="container">
+                    <div class="container" style="margin-bottom: 30px; margin-left: 20px; margin-right: 20px;">
                       <div class="row">
                         <div class="custom-control custom-radio">
                           <input id="credit" name="pay" type="radio" class="custom-control-input" required>
-                          <label class="custom-control-label" for="credit">Tarjeta de crédito</label>
+                          <label class="custom-control-label" for="credit" style="font-weight: bold;">Tarjeta de crédito</label>
                         </div>
-                      </div>
+                      </div><br>
                       <div class="row">
                         <div class="col-md-6">
                           <label for="validationCustom01" class="form-label">Nombre del titular</label>
@@ -230,17 +230,17 @@
                         </div>
                       </div>
                     </div>
-                    <div class="container">
+                    <div class="container" style="margin-bottom: 30px; margin-left: 20px; margin-right: 20px;">
                       <div class="row">
                         <div class="custom-control custom-radio">
-                          <input id="transfer" name="pay" type="radio" class="custom-control-input" required>
-                          <label class="custom-control-label" for="transfer">Transferencia bancaria</label>
+                          <input id="transfer" name="pay" type="radio" class="custom-control-input"  required>
+                          <label class="custom-control-label" for="transfer" style="font-weight: bold;">Transferencia bancaria</label>
                         </div>
-                      </div>
+                      </div><br>
                       <div class="row">
                         <div class="col-md-6">
                           <label for="validationCustom05" class="form-label">Número de cuenta</label>
-                          <input type="text" class="form-control" id="validationCustom05" required>
+                          <input type="text" class="form-control" id="validationCustom05" required style="margin-bottom: 10px;">
                         </div>
                       </div>
                       <div class="modal-footer">

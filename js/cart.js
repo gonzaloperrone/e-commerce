@@ -31,14 +31,14 @@ function cartInf() {
               <td>
                   <div class="price-wrap"><var class="price" id="subt${i + 1}"> ${cartArt[i].count * costo}</var> </div>
               </td>
-              <td class="d-none d-md-block"> <button class="btn btn-light" type="button" id="remove" onclick = "deleteRowFun(this, ${i+1})">Remove</button> </td>
+              <td class="d-none d-md-block"> <button class="btn btn-light" type="button" id="remove" onclick = "borrarElemento(${i})">Remove</button> </td>
           </tr>
           `
 
-
+//<td class="d-none d-md-block"> <button class="btn btn-light" type="button" id="remove" onclick = "deleteRowFun(this, ${i + 1})">Remove</button> </td>
     }
     //agrego la tabla y el total al HTML
-    document.getElementById("cart").innerHTML += html;
+    document.getElementById("cart").innerHTML = html;
     document.getElementById("total").innerHTML = suma;
     subTotalSum = suma;
 }
@@ -51,17 +51,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
             cartInf();
         }
     });
-    document.getElementById("premium").addEventListener("change", function(){
+    document.getElementById("premium").addEventListener("change", function () {
         porcent = 0.15;
         updateTotalCosts();
     });
-    
-    document.getElementById("express").addEventListener("change", function(){
+
+    document.getElementById("express").addEventListener("change", function () {
         porcent = 0.07;
         updateTotalCosts();
     });
-    
-    document.getElementById("standard").addEventListener("change", function(){
+
+    document.getElementById("standard").addEventListener("change", function () {
         porcent = 0.05;
         updateTotalCosts();
     });
@@ -75,7 +75,8 @@ function sub(subT) {
         costo = costo / 40;
     }
     document.getElementById("subt" + subT).innerHTML = st * costo;
-    total()
+    total();
+    updateTotalCosts();
 }
 
 //funcion para obtener el total
@@ -84,73 +85,89 @@ function total() {
     let htmlToAppend = "";
     //uso el for para recorrer los subtotales y sumarlos
     for (let i = 1; i <= cartArt.length; i++) {
-        var subtotal = document.getElementById("subt" + i).textContent;
+        if(document.getElementById("subt" + i )!== undefined){
+            var subtotal = document.getElementById("subt" + i).textContent;
         suma += parseInt(subtotal);
+        }
+        
     }
     //agrego la suma de total al HTML
     document.getElementById("total").innerHTML = suma;
     subTotalSum = suma;
 }
 
-function updateTotalCosts(){
-    
+function updateTotalCosts() {
     let costoEnvio = subTotalSum * porcent;
     document.getElementById("cost").innerHTML = Math.round(costoEnvio);
 
-    let total =  subTotalSum +  costoEnvio;
+    let total = subTotalSum + costoEnvio;
     document.getElementById("total").innerHTML = Math.round(total);
 }
 
 
-function deleteRowFun(row, remov) {
+/*function deleteRowFun(row, remov) {
     var d = row.parentNode.parentNode.rowIndex;
     let subtotal = parseInt(document.getElementById("subt" + remov).innerText);
     document.getElementById('tab').deleteRow(d);
     subTotalSum = Math.round(subTotalSum - subtotal);
-    document.getElementById("cost").innerHTML = subTotalSum;
+   document.getElementById("cost").innerHTML = subTotalSum;
     document.getElementById("total").innerHTML = subTotalSum;
+    updateTotalCosts();
+}*/
+
+//quita un elemento con un id determinado del carrito de compras
+function borrarElemento(id){
+    let i = 0;
+    for(let p of cartArt){
+        p.count = document.getElementById(i + 1).value; //guardar cantidades 
+        i++;
+    }
+    cartArt.splice(id, 1);//quitar elemento del array de productos
+    cartInf();//actualizar carrito
+    total();
+    updateTotalCosts();
 }
 
 (function () {
     'use strict'
-  
+
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     var forms = document.querySelectorAll('.needs-validation')
-  
+
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-  
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })();
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
 
- document.getElementById("credit").addEventListener("change", function(){
-      //document.getElementById("transfer").disabled = true;
+                form.classList.add('was-validated')
+            }, false)
+        })
+})();
 
-      document.getElementById("validationCustom01").disabled = false;
-      document.getElementById("validationCustom02").disabled = false;
-      document.getElementById("validationCustom03").disabled = false;
-      document.getElementById("validationCustom04").disabled = false;
+document.getElementById("credit").addEventListener("change", function () {
+    //document.getElementById("transfer").disabled = true;
 
-      document.getElementById("validationCustom05").disabled = true;
-  });
+    document.getElementById("validationCustom01").disabled = false;
+    document.getElementById("validationCustom02").disabled = false;
+    document.getElementById("validationCustom03").disabled = false;
+    document.getElementById("validationCustom04").disabled = false;
 
-   document.getElementById("transfer").addEventListener("change", function(){
+    document.getElementById("validationCustom05").disabled = true;
+});
+
+document.getElementById("transfer").addEventListener("change", function () {
     /*document.getElementById("credit").disabled = true;*/
 
     document.getElementById("validationCustom05").disabled = false;
 
     document.getElementById("validationCustom01").disabled = true;
-      document.getElementById("validationCustom02").disabled = true;
-      document.getElementById("validationCustom03").disabled = true;
-      document.getElementById("validationCustom04").disabled = true;
+    document.getElementById("validationCustom02").disabled = true;
+    document.getElementById("validationCustom03").disabled = true;
+    document.getElementById("validationCustom04").disabled = true;
 });
 
 function validarCompra() {
@@ -160,43 +177,43 @@ function validarCompra() {
         let dateV = document.getElementById("validationCustom03").value;
         let cvv = document.getElementById("validationCustom04").value;
 
-        if ((cred != "") && (tit != "") && (dateV != "") && (cvv != "")){
+        if ((cred != "") && (tit != "") && (dateV != "") && (cvv != "")) {
             return true
         } else {
-            alert("Seleccione método de pago.");
+            alert("Seleccione método de pago");
             return false;
         }
-    } else if(document.getElementById("transfer").checked) {
-         let numTransf = document.getElementById("validationCustom05").value;
-         if (numTransf != ""){
-                return true
-         } else {
+    } else if (document.getElementById("transfer").checked) {
+        let numTransf = document.getElementById("validationCustom05").value;
+        if (numTransf != "") {
+            return true
+        } else {
             alert("Complete los campos de transferencia");
-            return false;   
-         }
-    } else if (!(document.getElementById("credit").checked || document.getElementById("transfer").checked)){
+            return false;
+        }
+    } else if (!(document.getElementById("credit").checked || document.getElementById("transfer").checked)) {
         alert("Seleccionar forma de pago");
         return false;
-    }    
+    }
 }
 
-function habilitarCompra(){
-     if (document.getElementById("credit").checked) {
+function habilitarCompra() {
+    if (document.getElementById("credit").checked) {
         let cred = document.getElementById("validationCustom01").value;
         let tit = document.getElementById("validationCustom02").value;
         let dateV = document.getElementById("validationCustom03").value;
         let cvv = document.getElementById("validationCustom04").value;
 
-        if ((cred != "") && (tit != "") && (dateV != "") && (cvv != "")){
+        if ((cred != "") && (tit != "") && (dateV != "") && (cvv != "")) {
             /*jquery*/
-           $("#exampleModal").modal('hide');
+            $("#exampleModal").modal('hide');
         }
-    } else if(document.getElementById("transfer").checked) {
-         let numTransf = document.getElementById("validationCustom05").value;
-         if (numTransf != ""){
+    } else if (document.getElementById("transfer").checked) {
+        let numTransf = document.getElementById("validationCustom05").value;
+        if (numTransf != "") {
             /*jquery*/
-           $("#exampleModal").modal('hide');
-         }
+            $("#exampleModal").modal('hide');
+        }
     }
     return false;
 }

@@ -31,11 +31,9 @@ function cartInf() {
               <td>
                   <div class="price-wrap"><var class="price" id="subt${i + 1}"> ${cartArt[i].count * costo}</var> </div>
               </td>
-              <td class="d-none d-md-block"> <button class="btn btn-light" type="button" id="remove" onclick = "borrarElemento(${i})">Remove</button> </td>
+              <td class="d-none d-md-block"> <button class="btn btn-light" type="button" id="remove" onclick = "remove(${i})">Eliminar</button> </td>
           </tr>
           `
-
-//<td class="d-none d-md-block"> <button class="btn btn-light" type="button" id="remove" onclick = "deleteRowFun(this, ${i + 1})">Remove</button> </td>
     }
     //agrego la tabla y el total al HTML
     document.getElementById("cart").innerHTML = html;
@@ -51,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             cartInf();
         }
     });
+    //calculo el porcentaje del costo de envio sobre el total para cada boton
     document.getElementById("premium").addEventListener("change", function () {
         porcent = 0.15;
         updateTotalCosts();
@@ -85,17 +84,18 @@ function total() {
     let htmlToAppend = "";
     //uso el for para recorrer los subtotales y sumarlos
     for (let i = 1; i <= cartArt.length; i++) {
-        if(document.getElementById("subt" + i )!== undefined){
+        if (document.getElementById("subt" + i) !== undefined) {
             var subtotal = document.getElementById("subt" + i).textContent;
-        suma += parseInt(subtotal);
+            suma += parseInt(subtotal);
         }
-        
+
     }
     //agrego la suma de total al HTML
     document.getElementById("total").innerHTML = suma;
     subTotalSum = suma;
 }
 
+//funcion para mostrar el costo del envio con el porcentaje caluclado y para mostrar el total
 function updateTotalCosts() {
     let costoEnvio = subTotalSum * porcent;
     document.getElementById("cost").innerHTML = Math.round(costoEnvio);
@@ -104,37 +104,28 @@ function updateTotalCosts() {
     document.getElementById("total").innerHTML = Math.round(total);
 }
 
-
-/*function deleteRowFun(row, remov) {
-    var d = row.parentNode.parentNode.rowIndex;
-    let subtotal = parseInt(document.getElementById("subt" + remov).innerText);
-    document.getElementById('tab').deleteRow(d);
-    subTotalSum = Math.round(subTotalSum - subtotal);
-   document.getElementById("cost").innerHTML = subTotalSum;
-    document.getElementById("total").innerHTML = subTotalSum;
-    updateTotalCosts();
-}*/
-
-//quita un elemento con un id determinado del carrito de compras
-function borrarElemento(id){
+//funcion para quitar un producto
+function remove(id) {
     let i = 0;
-    for(let p of cartArt){
-        p.count = document.getElementById(i + 1).value; //guardar cantidades 
+    for (let quit of cartArt) {
+        quit.count = document.getElementById(i + 1).value; //guardar y actualizar cantidad de los productos
         i++;
     }
-    cartArt.splice(id, 1);//quitar elemento del array de productos
-    cartInf();//actualizar carrito
+    cartArt.splice(id, 1);//quitar el producto
+    //actualizar los precios y costos
+    cartInf();
     total();
     updateTotalCosts();
 }
 
+//funcion para validaciones por Bootstrap
 (function () {
     'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    //Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
     var forms = document.querySelectorAll('.needs-validation')
 
-    // Loop over them and prevent submission
+    //Bucle sobre ellos y evitar la presentación
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
@@ -148,9 +139,8 @@ function borrarElemento(id){
         })
 })();
 
+//desahbilitar input de transferencia al seleccionar tarjeta de credito
 document.getElementById("credit").addEventListener("change", function () {
-    //document.getElementById("transfer").disabled = true;
-
     document.getElementById("validationCustom01").disabled = false;
     document.getElementById("validationCustom02").disabled = false;
     document.getElementById("validationCustom03").disabled = false;
@@ -159,9 +149,8 @@ document.getElementById("credit").addEventListener("change", function () {
     document.getElementById("validationCustom05").disabled = true;
 });
 
+//desahbilitar input de tarjeta de credito al seleccionar trasnferencia
 document.getElementById("transfer").addEventListener("change", function () {
-    /*document.getElementById("credit").disabled = true;*/
-
     document.getElementById("validationCustom05").disabled = false;
 
     document.getElementById("validationCustom01").disabled = true;
@@ -170,7 +159,7 @@ document.getElementById("transfer").addEventListener("change", function () {
     document.getElementById("validationCustom04").disabled = true;
 });
 
-function validarCompra() {
+function validation() {
     if (document.getElementById("credit").checked) {
         let cred = document.getElementById("validationCustom01").value;
         let tit = document.getElementById("validationCustom02").value;
@@ -197,7 +186,8 @@ function validarCompra() {
     }
 }
 
-function habilitarCompra() {
+//funcion para ocultar el modal al llenar los campos obligatorios y apretar confirmar
+function ok() {
     if (document.getElementById("credit").checked) {
         let cred = document.getElementById("validationCustom01").value;
         let tit = document.getElementById("validationCustom02").value;
@@ -205,14 +195,14 @@ function habilitarCompra() {
         let cvv = document.getElementById("validationCustom04").value;
 
         if ((cred != "") && (tit != "") && (dateV != "") && (cvv != "")) {
-            /*jquery*/
-            $("#exampleModal").modal('hide');
+            //jquery
+            $("#addMyModal").modal('hide');
         }
     } else if (document.getElementById("transfer").checked) {
         let numTransf = document.getElementById("validationCustom05").value;
         if (numTransf != "") {
-            /*jquery*/
-            $("#exampleModal").modal('hide');
+            //jquery
+            $("#addMyModal").modal('hide');
         }
     }
     return false;

@@ -1,5 +1,6 @@
 const CART2 = "https://japdevdep.github.io/ecommerce-api/cart/654.json"
 var cartInfo = [];
+var subTotalSum = 0;
 
 //funcion para la tabla de carrito
 function cartInf() {
@@ -29,7 +30,7 @@ function cartInf() {
               <td>
                   <div class="price-wrap"><var class="price" id="subt${i + 1}"> ${cartArt[i].count * costo}</var> </div>
               </td>
-              <td class="d-none d-md-block"> <button class="btn btn-light" type="button">Remove</button> </td>
+              <td class="d-none d-md-block"> <button class="btn btn-light" type="button" id="remove" onclick = "deleteRowFun(this, ${i+1})">Remove</button> </td>
           </tr>
           `
 
@@ -38,6 +39,7 @@ function cartInf() {
     //agrego la tabla y el total al HTML
     document.getElementById("cart").innerHTML += html;
     document.getElementById("total").innerHTML = suma;
+    subTotalSum = suma;
 }
 
 //obtengo el json
@@ -47,6 +49,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
             cartArt = resultObj.data.articles;
             cartInf();
         }
+    });
+    document.getElementById("premium").addEventListener("click", function () {
+        premium();
+        costPremium();
+    });
+    document.getElementById("express").addEventListener("click", function () {
+        express();
+        costExpress();
+    });
+    document.getElementById("standard").addEventListener("click", function () {
+        standard();
+        costStandard();
     });
 });
 
@@ -70,8 +84,138 @@ function total() {
         var subtotal = document.getElementById("subt" + i).textContent;
         suma += parseInt(subtotal);
     }
-//agrego la suma de total al HTML
+    //agrego la suma de total al HTML
     document.getElementById("total").innerHTML = suma;
+    subTotalSum = suma;
+}
+
+function updateTotalCosts(){
+    let subtotal = parseFloat(document.getElementById("total").innerHTML);
+    
+    let costoEnvio = subtotal * subTotalSum;
+    document.getElementById("costo").innerHTML = costoEnvio;
+
 }
 
 
+function premium() {
+    document.getElementById("total").innerHTML = Math.round((subTotalSum) + (subTotalSum * 0.15));
+}
+
+function express() {
+    document.getElementById("total").innerHTML = Math.round((subTotalSum) + (subTotalSum * 0.07));
+}
+
+function standard() {
+    document.getElementById("total").innerHTML = Math.round((subTotalSum) + (subTotalSum * 0.05));
+}
+
+function costPremium() {
+    document.getElementById("cost").innerHTML = Math.round(subTotalSum * 0.15);
+}
+
+function costExpress() {
+    document.getElementById("cost").innerHTML = Math.round(subTotalSum * 0.07);
+}
+
+function costStandard() {
+    document.getElementById("cost").innerHTML = Math.round(subTotalSum * 0.05);
+}
+
+function deleteRowFun(row, remov) {
+    var d = row.parentNode.parentNode.rowIndex;
+    let subtotal = parseInt(document.getElementById("subt" + remov).innerText);
+    document.getElementById('tab').deleteRow(d);
+    subTotalSum = Math.round(subTotalSum - subtotal);
+    document.getElementById("total").innerHTML = subTotalSum;
+}
+
+(function () {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })();
+
+ document.getElementById("credit").addEventListener("change", function(){
+      //document.getElementById("transfer").disabled = true;
+
+      document.getElementById("validationCustom01").disabled = false;
+      document.getElementById("validationCustom02").disabled = false;
+      document.getElementById("validationCustom03").disabled = false;
+      document.getElementById("validationCustom04").disabled = false;
+
+      document.getElementById("validationCustom05").disabled = true;
+  });
+
+   document.getElementById("transfer").addEventListener("change", function(){
+    /*document.getElementById("credit").disabled = true;*/
+
+    document.getElementById("validationCustom05").disabled = false;
+
+    document.getElementById("validationCustom01").disabled = true;
+      document.getElementById("validationCustom02").disabled = true;
+      document.getElementById("validationCustom03").disabled = true;
+      document.getElementById("validationCustom04").disabled = true;
+});
+
+function validarCompra() {
+    if (document.getElementById("credit").checked) {
+        let cred = document.getElementById("validationCustom01").value;
+        let tit = document.getElementById("validationCustom02").value;
+        let dateV = document.getElementById("validationCustom03").value;
+        let cvv = document.getElementById("validationCustom04").value;
+
+        if ((cred != "") && (tit != "") && (dateV != "") && (cvv != "")){
+            return true
+        } else {
+            alert("Seleccione método de pago.");
+            return false;
+        }
+    } else if(document.getElementById("transfer").checked) {
+         let numTransf = document.getElementById("validationCustom05").value;
+         if (numTransf != ""){
+                return true
+         } else {
+            alert("Complete los campos de transferencia");
+            return false;   
+         }
+    } else if (!(document.getElementById("credit").checked || document.getElementById("transfer").checked)){
+        alert("Seleccionar forma de pago");
+        return false;
+    }    
+}
+
+function habilitarCompra(){
+     if (document.getElementById("credit").checked) {
+        let cred = document.getElementById("validationCustom01").value;
+        let tit = document.getElementById("validationCustom02").value;
+        let dateV = document.getElementById("validationCustom03").value;
+        let cvv = document.getElementById("validationCustom04").value;
+
+        if ((cred != "") && (tit != "") && (dateV != "") && (cvv != "")){
+            /*jquery*/
+           $("#exampleModal").modal('hide');
+        }
+    } else if(document.getElementById("transfer").checked) {
+         let numTransf = document.getElementById("validationCustom05").value;
+         if (numTransf != ""){
+            /*jquery*/
+           $("#exampleModal").modal('hide');
+         }
+    }
+    return false;
+}

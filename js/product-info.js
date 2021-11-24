@@ -81,7 +81,7 @@ function showComments(array) {
             <div class="card card-white post">
                 <div class="post-heading">
                     <div class="float-left image">
-                    <img src="../e-commerce/img/usuario.png" class="img-circle avatar" alt="user profile image">
+                    <img src="img/usuario.png" class="img-circle avatar" alt="user profile image">
                     </div>
                     <div class="float-left meta">
                         <div class="title h5">

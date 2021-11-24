@@ -167,21 +167,21 @@ function validation() {
         let cvv = document.getElementById("validationCustom04").value;
 
         if ((cred != "") && (tit != "") && (dateV != "") && (cvv != "")) {
-            return true
+            alert ("¡Su compra ha sido realizada con éxito!")
         } else {
-            alert("Seleccione método de pago");
+            alert("Complete los campos de tarjeta de crédito");
             return false;
         }
     } else if (document.getElementById("transfer").checked) {
         let numTransf = document.getElementById("validationCustom05").value;
         if (numTransf != "") {
-            return true
+            alert ("¡Su compra ha sido realizada con éxito!")
         } else {
             alert("Complete los campos de transferencia");
             return false;
         }
     } else if (!(document.getElementById("credit").checked || document.getElementById("transfer").checked)) {
-        alert("Seleccionar forma de pago");
+        alert("Complete los campos y/o seleccione forma de pago");
         return false;
     }
 }

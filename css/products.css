@@ -1,0 +1,65 @@
+#searchbar {
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px #0087F7 solid;
+  border-radius: .25rem;
+}
+
+#searchbar:focus {
+  border-bottom: 2px #0087F7 solid;
+  outline: none;
+  background-color: rgb(241, 241, 241);
+}
+
+.btns{
+  margin: auto !important;
+  justify-content: center;
+}
+
+.inputForm{
+  margin: 5px 5px;
+}
+
+.card:hover {
+  background-color: #d8d8d8;
+  transform: scale(1.01);
+}
+
+.range{
+  text-align: center !important;
+}
+
+.row1Btn{
+  cursor: pointer;
+}
+
+.card{
+  color: black !important;
+}
+
+.card:hover {
+  color: black !important;
+  text-decoration: none;
+}
+
+#prod-list-container{
+  margin-top: 10px;
+  background-color: rgb(251, 254, 255);
+  padding: 20px;
+  border-radius: 10px
+}
+
+@media(max-width: 1000px){
+  .searchbarBox{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+}

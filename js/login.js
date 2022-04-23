@@ -5,7 +5,7 @@ function logIn() {
   if((user !=="") &&(pass !=="")){
     localStorage.setItem("user", user);
 
-    window.location = "inicio.html";
+    window.location = "home.html";
   }
   else{
     alert("Debe completar los campos")

@@ -14,39 +14,12 @@
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/products.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand"><img src="img/login_edit.png" alt="e-commerce" style="width: 100px;"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="inicio.html">Inicio<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="categories.html">Categorías</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="products.html">Productos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="sell.html">Vender</a>
-        </li>
-        <li class="nav-item dropdown" id="log">
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="cart.html">Mi carrito</a>
-            <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
-            <a class="dropdown-item" id="logOut" href="index.html">Cerrar sesión</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <header id="header">
+  </header>
   <main role="main" class="pb-5">
     <div class="text-center p-4">
       <h2>Productos</h2>
@@ -54,48 +27,39 @@
     </div>
 
     <div class="container">
-
       <div class="row">
         <div class="col text-right">
           <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-            <label class="btn btn-light active" id="sortAsc">
+            <label class="btn btn-light active row1Btn" id="sortAsc">
               <input type="radio" name="options" autocomplete="off" checked>Menor precio
             </label>
-            <label class="btn btn-light" id="sortDesc">
+            <label class="btn btn-light price row1Btn" id="sortDesc">
               <input type="radio" name="options" autocomplete="off">Mayor precio
             </label>
-            <label class="btn btn-light" id="sortByCount">
+            <label class="btn btn-light row1Btn" id="sortByCount">
               <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cantidad
               de art. vendidos
             </label>
           </div>
         </div>
       </div>
-      <div class="row justify-content-end">
-        <div class="col-md-6">
-          <div class="container input-group">
-            <span class="input-group-addon"><input type="text" id="buscador" placeholder="¿Qué estás buscando?"></span>
-            <button class="btn btn-light" id="boton">Buscar!</button>
-          </div>
 
+      <div class="row">
+        <div class="col-md-6">
+          <div class="searchbarBox">
+            <input type="text" id="searchbar" placeholder="¿Qué estás buscando?">
+          </div>
         </div>
-        <div class="col-md-6 col-sm-12 mb-1 container">
-          <div class="row container p-0 m-0">
-            <div class="col-md-3 col-sm-4">
-              <p class="font-weight-normal text-right my-2" style="text-align:left !important">Rango precio</p>
-            </div>
-            <div class="col-md-3 col-sm-4">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" style="width: 110px;">
-            </div>
-            <div class="col-md-3 col-sm-4">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" style="width: 110px;">
-            </div>
-            <div class="col-md-3 col-sm-12 p-0">
-              <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount"
-                  style="align-items: center;">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter" style="align-items: center;">Limpiar</button>
-              </div>
+
+        <div class="col-md-6 range">
+          <div class="row btns">
+            <input class="form-control inputForm" type="number" placeholder=" $ min." id="rangeFilterCountMin"
+              style="width: 110px;">
+            <input class="form-control inputForm" type="number" placeholder="$ máx." id="rangeFilterCountMax"
+              style="width: 110px;">
+            <div class="btn-group" role="group">
+              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
             </div>
           </div>
         </div>
@@ -110,6 +74,7 @@
           </div>
         </div>
   </main>
+  
   <footer class="text-muted bg-light">
     <div class="container">
       <p class="float-right">

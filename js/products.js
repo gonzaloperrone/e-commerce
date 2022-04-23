@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 //creo las constantes para el buscador
-const buscador = document.querySelector('#buscador');
+const searchbar = document.querySelector('#searchbar');
 const resultado = document.querySelector('#prod-list-container')
 
 resultado.innerHTML = '';
@@ -142,15 +142,15 @@ resultado.innerHTML = '';
 const buscar = () => {
     resultado.innerHTML = '';
     //con toLowerCase convierto la cadena en letras minusculas
-    const texto = buscador.value.toLowerCase();
+    const texto = searchbar.value.toLowerCase();
     //recorro el array y declaro una variable para que el buscador filtre por el nombre del producto
     for (let product of currentProductsArray) {
         let prod = product.name.toLowerCase();
         //con indexOf nos retorna el primer indice del array
         if (prod.indexOf(texto) !== -1) {
             resultado.innerHTML += `
-            <div class="col-md-4">
-              <a class="card mb-4 shadow-sm custom-card">
+            <div class="col-md-4 ">
+              <a class="card mb-4 shadow-sm custom-card productsCards">
               <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
                 <h3 class="m-3">`+ product.name + `</h3>
                 <div class="card-body">
@@ -170,5 +170,5 @@ const buscar = () => {
     }
 }
 //creamos el evento para el buscador que con keyup se ejecuta el evento en cada tecla que se escriba
-buscador.addEventListener('keyup', buscar);
+searchbar.addEventListener('keyup', buscar);
 buscar()

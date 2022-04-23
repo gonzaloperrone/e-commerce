@@ -1,52 +1,7 @@
-.jumbotron, .card-body, .container, .site-header{
-    font-family: 'Raleway', serif !important;
-}
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
 
-.jumbotron .display-4{
-    font-weight: bold;
-}
-
-.jumbotron {
-  padding: 5em inherit;
-  margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: black;
-  font-weight: bold;
-}
-
-.img-fluid{
-max-width: 100%;
-height: auto;
-}
-
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
-
-.jumbotron p:last-child {
-  margin-bottom: 0;
-}
-
-.jumbotron-heading {
-  font-weight: 300;
-}
-
-.jumbotron .container {
-  max-width: 40rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  text-shadow: 1px 1px 2px grey;
-}
-
-.jumbotron .lead{
-  font-size: 38px;
+*{
+  font-family: 'Baloo 2', cursive;
 }
 
 footer {
@@ -71,15 +26,15 @@ footer p {
   color: black;
 }
 
-.dropzone{
+.dropzone {
   border: 2px dashed #0087F7;
   border-radius: 5px;
   background: black(44, 42, 42);
 }
 
-.alert{
+.alert {
   position: fixed;
-  top:80px;
+  top: 80px;
   width: 50%;
   left: 50%;
   transform: translate(-50%, 0);
@@ -90,9 +45,10 @@ footer p {
   position: relative;
   width: 64px;
   height: 64px;
-  top:50%;
+  top: 50%;
   left: 50%;
 }
+
 .lds-ring div {
   box-sizing: border-box;
   display: block;
@@ -105,144 +61,83 @@ footer p {
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #fff transparent transparent transparent;
 }
+
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
 }
+
 .lds-ring div:nth-child(2) {
   animation-delay: -0.3s;
 }
+
 .lds-ring div:nth-child(3) {
   animation-delay: -0.15s;
 }
+
 @keyframes lds-ring {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 
-#spinner-wrapper{
+#spinner-wrapper {
   position: fixed;
-  background-color: rgba(0,0,0,0.5);
-  width:100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
   height: 100%;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   z-index: 1021;
   display: none;
 }
 
-a.custom-card,
-a.custom-card:hover {
-  color: inherit;
-  text-decoration: inherit;
+#navLogo {
+  margin: auto;
+  padding: 15px;
+  width: 240px;
+  height: auto;
 }
 
-.checked {
-  color: orange;
+.collapse {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.navbar-nav .dropdown-menu{
-  position: absolute !important;
+.nav-link{
+  color: white !important;
+  font-size: 20px;
 }
 
-.list-group-item:hover{
-  -webkit-transform:scale(1.05);transform:scale(1.05);
+.nav-link:hover{
+  color: rgb(110, 190, 255) !important;
+  transform: scale(1.05)
 }
 
-
-
-a.custom-card:hover{
-  -webkit-transform:scale(1.05);transform:scale(1.05);
+.navbar-brand{
+  cursor: pointer;
 }
 
-#comm{
-  text-align:center;
-  margin-top: 40px;
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
 }
 
-.stars-outer {
-  display: inline-block;
-  position: relative;
-  font-family: FontAwesome;
+@media (min-width: 1080px) {
+  .jumbotron {
+    height: 500px !important;
+  }
 }
 
-.stars-outer::before {
-  content: "\f006 \f006 \f006 \f006 \f006";
-}
-
-.stars-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-}
-
-.stars-inner::before {
-  content: "\f005 \f005 \f005 \f005 \f005";
-  color: #f8ce0b;
-}
-
-.attribution {
-  font-size: 12px;
-  color: #444;
-  text-decoration: none;
-  text-align: center;
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  z-index: -1;
-}
-.attribution:hover {
-  color: #1fa67a;
-}
-
-#buscador {
-  display: block;
-  width: 100%;
-  height: calc(1.5em + .75rem + 2px);
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-#boton{
-  margin-left: 10px;
-}
-
-#cards{
-  display:inline-block; 
-}
-
-.card-title{
-  text-align: center;
-}
-
-.vermas{
-  margin-top: 10%;
-}
-
-.related{
-  text-align: center;
-}
-
-.prodRel{
-  text-align: center;
-  margin: 20px;
-  margin-top: 40px;
-}
-
-.imgCart{
-  size: 10px;
+@media (max-width: 1080px) {
+  .collapse {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
 }

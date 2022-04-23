@@ -1,0 +1,65 @@
+.jumbotron,
+.card-body,
+.container,
+.site-header {
+  font-family: 'Raleway', serif !important;
+}
+
+.jumbotron .display-4 {
+  font-weight: bold;
+}
+
+.jumbotron {
+  padding: 5em inherit;
+  margin-bottom: 0;
+  background-color: #53C0FB;
+  background: url('../img/cover_back.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  text-shadow: 1px 1px 2px grey;
+}
+
+.jumbotron .lead {
+  font-size: 38px;
+}
+
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.navbar-nav .dropdown-menu {
+  position: absolute !important;
+}
+
+.list-group-item:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+a.custom-card:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
